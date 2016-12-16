@@ -38,7 +38,7 @@ public class InputReader {
 		}
 		
 		s.close();
-		
+				
 		return dataSet;
 			
 	}

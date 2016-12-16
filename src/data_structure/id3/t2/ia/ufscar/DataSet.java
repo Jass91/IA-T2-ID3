@@ -12,29 +12,34 @@ public class DataSet extends HashSet<Data>{
 	private HashMap<String, Integer> numberOfClass;
 
 	public DataSet(){
+		numberOfClass = new HashMap<String, Integer>();
+	}
+
+	public List<String> getAllClasses(){
+		return attributeDescriptor.getAttributeDescription("Class").getPossibleValues();
+	}
+
+	public int getNumberOfDataOfClass(String c) {
+		return numberOfClass.get(c);
+	}
+
+	public void initialize() {
 		attributeDescriptor = new AttributeDescriptor(this);
 		calculateNumberOfDataForEachClass();
 	}
 
 	private void calculateNumberOfDataForEachClass(){
 
-		for(String c : attributeDescriptor.getAttributeDescription("Class").getPossibleValues()){
+		AttributeDescription classDescription = attributeDescriptor.getAttributeDescription("Class");
+		for(String c : classDescription.getPossibleValues()){
 			int cont = 0;
 			for(Data d : this){
 				String attributeClass = d.getAttribute("Class").getValue();
 				if(attributeClass.equals(c))
 					cont++;
 			}
-			
+
 			numberOfClass.put(c, cont);
 		}
-	}
-
-	public List<String> getAllClasses(){
-		return attributeDescriptor.getAttributeDescription("Class").getPossibleValues();
-	}
-	
-	public int getNumberOfDataOfClass(String c) {
-		return numberOfClass.get(c);
 	}
 }

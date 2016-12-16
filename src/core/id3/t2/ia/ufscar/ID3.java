@@ -8,6 +8,7 @@ public class ID3 {
 	
 	public ID3(DataSet dataSet){
 		this.dataSet = dataSet;
+		this.dataSet.initialize();
 	}
 	
 	
@@ -18,9 +19,11 @@ public class ID3 {
 	private double calculateEntropy(DataSet dataSet){
 		
 		double entropy = 0;
+		int dataSetSize = dataSet.size();
 		for(String c : dataSet.getAllClasses()){
-			int pi = dataSet.getNumberOfDataOfClass(c);
-			double log2pi = Math.log10(pi) / Math.log10(2);
+			int numberOfobjectsOfClassC = dataSet.getNumberOfDataOfClass(c);
+			double pi =  numberOfobjectsOfClassC / dataSetSize;
+			double log2pi = pi != 0 ? (Math.log10(pi) / Math.log10(2)) : 0;
 			entropy += (-pi * log2pi);
 		}
 		

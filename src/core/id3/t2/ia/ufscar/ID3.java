@@ -1,19 +1,23 @@
 package core.id3.t2.ia.ufscar;
 
 import data_structure.id3.t2.ia.ufscar.DataSet;
+import data_structure.id3.t2.ia.ufscar.Tree;
 
 public class ID3 {
 	
 	private DataSet dataSet;
-	
+		
 	public ID3(DataSet dataSet){
 		this.dataSet = dataSet;
 		this.dataSet.initialize();
 	}
 	
 	
-	public void getTree(){
+	public Tree getTree(){
+		Tree tree = new Tree(null);
 		calculateEntropy(dataSet);
+		
+		return tree;
 	}
 	
 	private double calculateEntropy(DataSet dataSet){

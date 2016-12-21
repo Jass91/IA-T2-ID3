@@ -1,0 +1,8 @@
+Atributos: Casca, Cor, Tamanho, Polpa
+
+lisa,marrom,grande,macia
+lisa,verde,pequena,macia
+aspera,vermelho,pequena,macia
+lisa,vermelho,grande,dura
+lisa,vermelho,pequena,dura
+aspera,verde,pequena,dura

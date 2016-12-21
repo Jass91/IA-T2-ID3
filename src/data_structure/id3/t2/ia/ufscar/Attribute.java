@@ -28,6 +28,6 @@ public class Attribute {
 	
 	@Override
 	public String toString(){
-		return "{label: " + label + ", value: " + value + "}";
+		return "{" + label + ": " + value + "}";
 	}
 }

@@ -37,9 +37,13 @@ public class AttributeDescription {
 	
 	@Override
 	public String toString(){
-		String r = "label: " + label + " values: [";
-		for(Object obj : possibleValues){
-			r += obj.toString() + ", ";
+		String r = label + ": [";
+		int i = 0;
+		for(String obj : possibleValues){
+			r += obj.toString();
+			if(i < possibleValues.size() - 1)
+				r += ", ";
+			i++;
 		}
 		
 		r += "]";

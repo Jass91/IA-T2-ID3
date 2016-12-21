@@ -5,10 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Data {
-	private HashMap<String, Attribute> attributes;
 	
-	public Data(){
+	private HashMap<String, Attribute> attributes;
+	private String label;
+	
+	public Data(String label){
 		attributes = new HashMap<String, Attribute>();
+		this.label = label;
+	}
+	
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 	
 	public void addAttribute(Attribute attribute){
@@ -30,12 +41,13 @@ public class Data {
 	
 	@Override
 	public String toString(){
-		String r = "[";
-		for(Attribute a : attributes.values()){
-			r += a.toString() + ", ";
+		String r = label + ": ";
+		int i = 0;
+		for(Attribute a : attributes.values()){			
+			r += a.getValue();
+			if(i < attributes.size() - 1)
+				r +=  ", ";
 		}
-		
-		r += "]";
 		
 		return r;
 	}

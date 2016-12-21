@@ -1,3 +1,12 @@
+Atributos: 6
+buying: vhigh, high, med, low
+maint: vhigh, high, med, low 
+doors: 2, 3, 4, 5more
+persons: 2, 4, more
+lugBoot: small, med, big 
+safety: low, med, high
+Classe: unacc, acc, good, vgood
+
 vhigh,vhigh,2,2,small,low,unacc
 vhigh,vhigh,2,2,small,med,unacc
 vhigh,vhigh,2,2,small,high,unacc

@@ -79,27 +79,54 @@ public class DataSet extends LinkedHashSet<Data>{
 		return r;
 	}
 
-	public String findCommomClassValueTo(AttributeDescription attribute) {
-		
-		String commonClassValue = "";
+	public String findCommonClassForAttribute(AttributeDescription attribute) {
+
+		String attrCommonValue = "";
 		int lastCount = 0;
-		
+
+		// encontra o valor mais frequente para o atributo do parametro
 		for(String v : attribute.getPossibleValues()){
 			int count = 0;
-			String aClass = null;
 			for(Data data : this){
-				Attribute attr = data.getAttribute(attribute.getLabel());
-				if(attr.getValue().equals(v)){
+				Attribute a = data.getAttribute(attribute.getLabel());
+				if(a.getValue().equals(v)){
 					count++;
-					aClass = data.getAttribute("Classe").getValue();
 				}
 			}
 
 			if(count > lastCount){
-				commonClassValue = aClass; 
+				lastCount = count;
+				attrCommonValue = v; 
 			}
 		}
-		
-		return commonClassValue;
+
+		// encontra os dados que possuem como valor = attrCommonValue
+		DataSet dSet = new DataSet();
+		for(Data data : this){
+			Attribute a = data.getAttribute(attribute.getLabel());
+			if(a.getValue().equals(attrCommonValue)){
+				dSet.add(data);
+			}
+		}
+
+		// encontra a classe mais frequente para o atributo X com valor Y
+		lastCount = 0;
+		String attrCommonClass = ""; 
+		for(String c : this.getAllClasses()){
+			int count = 0;
+			for(Data data : dSet){
+				String attrClass = data.getAttribute("Classe").getValue();
+				if(attrClass.equals(c)){
+					count++;
+				}
+			}
+
+			if(count > lastCount){
+				lastCount = count;
+				attrCommonClass = c; 
+			}
+		}
+
+		return attrCommonClass;
 	}
 }

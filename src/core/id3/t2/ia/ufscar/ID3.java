@@ -79,7 +79,7 @@ public class ID3 {
 			
 			// se retornou nulo, encontra o valor mais comum para o atributo
 			else{
-				TreeNode tn = new TreeNode(dtSet.findCommomValueTo(attributeDescription));
+				TreeNode tn = new TreeNode(dtSet.findCommomClassValueTo(attributeDescription));
 				node.addChild(v, tn);
 			}
 		}

@@ -1,16 +1,16 @@
 package data_structure.id3.t2.ia.ufscar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Data {
 	
-	private HashMap<String, Attribute> attributes;
+	private LinkedHashMap<String, Attribute> attributes;
 	private String label;
 	
 	public Data(String label){
-		attributes = new HashMap<String, Attribute>();
+		attributes = new LinkedHashMap<String, Attribute>();
 		this.label = label;
 	}
 	
@@ -47,6 +47,8 @@ public class Data {
 			r += a.getValue();
 			if(i < attributes.size() - 1)
 				r +=  ", ";
+			
+			i++;
 		}
 		
 		return r;

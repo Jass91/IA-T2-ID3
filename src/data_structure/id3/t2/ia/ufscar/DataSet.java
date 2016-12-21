@@ -1,11 +1,11 @@
 package data_structure.id3.t2.ia.ufscar;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 
-public class DataSet extends HashSet<Data>{
+public class DataSet extends LinkedHashSet<Data>{
 
 	private AttributeDescriptor attributeDescriptor;
 	private static final long serialVersionUID = 1L;
@@ -79,25 +79,27 @@ public class DataSet extends HashSet<Data>{
 		return r;
 	}
 
-	public String findCommomValueTo(AttributeDescription attribute) {
+	public String findCommomClassValueTo(AttributeDescription attribute) {
 		
-		String commonValue = "";
+		String commonClassValue = "";
 		int lastCount = 0;
 		
 		for(String v : attribute.getPossibleValues()){
 			int count = 0;
+			String aClass = null;
 			for(Data data : this){
 				Attribute attr = data.getAttribute(attribute.getLabel());
 				if(attr.getValue().equals(v)){
 					count++;
+					aClass = data.getAttribute("Classe").getValue();
 				}
 			}
 
 			if(count > lastCount){
-				commonValue = v;
+				commonClassValue = aClass; 
 			}
 		}
 		
-		return commonValue;
+		return commonClassValue;
 	}
 }
